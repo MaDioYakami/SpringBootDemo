@@ -15,13 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-    /**
-     * @return
-     */
-    @RequestMapping("/hello")
-    public String hello() {
-        return "helloWorld!";
-    }
 
     @RequestMapping("/")
     public String index() {
@@ -36,4 +29,11 @@ public class LoginController {
         modelAndView.addObject("name",name);
         return modelAndView;
     }
+
+
+
+
+
+
+
 }
