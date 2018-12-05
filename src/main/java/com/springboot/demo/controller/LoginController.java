@@ -30,6 +30,13 @@ public class LoginController {
         return modelAndView;
     }
 
+    @RequestMapping("/loginIndex")
+    public String loginIndex(){
+        String s="hello";
+        return "index";
+    }
+
+
 
 
 
