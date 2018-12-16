@@ -1,3 +1,7 @@
 spring:
   thymeleaf:
     prefix: classpath:/templates/
+
+  activemq:
+    broker-url: tcp://localhost:61617
+    in-memory: true
