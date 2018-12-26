@@ -1,16 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" th:src="@{/js/vue.min.js}"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
 </head>
 <body>
-
-<form action="login" method="post">
-    name:<input name="name" type="text"><br>
-    pwd:<input name="pwd" type="password"><br>
-    <input type="submit" value="submit">
-</form>
-
+<div id="app">
+    <el-tree :props="props" :load="loadNode" lazy="" show-checkbox @check-change="handleCheckChange">
+    </el-tree>
+</div>
 </body>
+<script>
+    var Main = {
+        data() {
+            return {
+                props: {
+                    label: 'name',
+                    id: 'id',
+                    children: 'zones'
+                },
+                count: 1
+            };
+        },
+        methods: {
+            handleCheckChange(data, checked, indeterminate) {
+                console.log(data, checked, indeterminate);
+            },
+            handleNodeClick(data) {
+                console.log(data);
+            },
+            loadNode(node, resolve) {
+                if (node.level === 0) {
+                    return resolve([{name: 'region1',id: 'id1'}, {name: 'region2',id: 'id2'}]);
+                }
+                if (node.level > 3) return resolve([]);
+
+                var hasChild;
+                if (node.data.name === 'region1') {
+                    hasChild = true;
+                } else if (node.data.name === 'region2') {
+                    hasChild = false;
+                } else {
+                    hasChild = Math.random() > 0.5;
+                }
+
+                setTimeout(() => {
+                    var data;
+                    if (hasChild) {
+                        data = [{
+                            name: 'zone' + ++this.count,
+                            id: 'id'+this.count
+                        }, {
+                            name: 'zone' + ++this.count,
+                            id: 'id'+this.count
+                        }];
+                    } else {
+                        data = [];
+                    }
+
+                    resolve(data);
+                }, 500);
+            }
+        }
+    };
+    var Ctor = Vue.extend(Main);
+    new Ctor().$mount('#app');
+</script>
 </html>
