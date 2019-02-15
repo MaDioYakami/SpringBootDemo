@@ -37,7 +37,7 @@
             },
             loadNode(node, resolve) {
                 if (node.level === 0) {
-                    return resolve([{name: 'region1',id: 'id1'}, {name: 'region2',id: 'id2'}]);
+                    return resolve([{name: 'region1', id: 'id1'}, {name: 'region2', id: 'id2'}]);
                 }
                 if (node.level > 3) return resolve([]);
 
@@ -55,10 +55,10 @@
                     if (hasChild) {
                         data = [{
                             name: 'zone' + ++this.count,
-                            id: 'id'+this.count
+                            id: 'id' + this.count
                         }, {
                             name: 'zone' + ++this.count,
-                            id: 'id'+this.count
+                            id: 'id' + this.count
                         }];
                     } else {
                         data = [];
