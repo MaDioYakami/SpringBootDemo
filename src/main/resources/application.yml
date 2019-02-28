@@ -7,3 +7,13 @@ spring:
 redis:
   port: 6379
   hostName: localhost
+
+#jasypt加密的密匙
+jasypt:
+  encryptor:
+    password: EbfYkitulv73I2p0mXI50JMXoaxZTKJ7
+
+test:
+  pwd: ENC(bUPLVwCOgwZyZUQdO2XVJKLXp+URX8mZs6imQ0MdwJc=)
+
+
