@@ -1,12 +1,13 @@
 package com.springboot.demo;
 
 import org.junit.Test;
-import redis.clients.jedis.*;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.JedisShardInfo;
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 
 public class RedisTestTwo {
