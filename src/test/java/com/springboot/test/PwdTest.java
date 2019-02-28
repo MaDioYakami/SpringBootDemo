@@ -1,4 +1,4 @@
-package com.springboot.demo;
+package com.springboot.test;
 
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Assert;
@@ -7,11 +7,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes=PwdTest.class)
+@ComponentScan("com.springboot")
 @WebAppConfiguration
 public class PwdTest {
     @Autowired
@@ -34,7 +37,7 @@ public class PwdTest {
 
     @Test
     public void getEncPass() {
-        System.out.printf(pwd);
+        System.out.println(pwd);
     }
 
 }
